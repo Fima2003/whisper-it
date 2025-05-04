@@ -1,0 +1,10 @@
+---
+export const prerender = false;
+import { HistoryItem } from "../../components/HistoryItem";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+const { name } = Astro.params;
+---
+
+<BaseLayout class="pt-20 px-4 flex justify-center">
+  <HistoryItem name={name!} client:load />
+</BaseLayout>

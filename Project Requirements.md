@@ -1,0 +1,9 @@
+# **Project Requirements Document: WhisperIt**
+
+The following table outlines the detailed functional requirements of The Urlist website.
+
+| Requirement ID | Description               | User Story                                                                                       | Expected Behavior/Outcome                                                                                                     |
+|-----------------|---------------------------|--------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
+| FR001 | In real-life transcription | A user presses a button 'Record', and the transcription starts to appear in the text-box | The button 'Record' changes its name to 'Stop Recording' and the color from purple to green. Every ten seconds, the audio chunk is being sent to the OpenAI API, and awaits for the response. The response should be added to a text-box. Check OpenAI Whisper documentation |
+| FR002 | Change of transcription language | A user selects a language from a drop-down that is supported by whisper | If there is an ongoing transcription, then the dropdown should not be enabled. Otherwise upon a button click a dropdown menu is opened. This dropdown menu contains languages supported by Whisper by OpenAI. |
+| FR003 | History | A user saves the history of the transcription upon the end of it | When the button 'Stop Recording' is pressed, a new button under the text-box should appear 'Save the transcript'. Upon pressing that button, the user is prompted to give it a name, and it saves the transcript in the local storage |
