@@ -1,47 +1,59 @@
-# Astro Starter Kit: Minimal
+# Whisper-IT: Real-Time Transcription & Translation
 
-```sh
-npm create astro@latest -- --template minimal
-```
+Whisper-IT is a modern web application for real-time speech transcription and translation, built with Vite, React, Tailwind CSS, Nanostores, and Astro. It leverages OpenAI's Whisper API for accurate speech-to-text and provides a seamless, responsive user experience.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
+## Features
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+- **Real-Time Transcription:**
+  - Start, pause, resume, and stop live audio transcription.
+  - Transcriptions are processed using OpenAI's Whisper API.
+- **History Management:**
+  - Save, name, and view past transcriptions.
+  - Transcriptions are stored in the browser's localStorage for privacy and offline access.
+- **Translation (Optional):**
+  - Translate transcribed text into English.
+- **Modern UI:**
+  - Responsive design with Tailwind CSS.
+  - Accessible controls and clear feedback for all actions.
+- **Astro Integration:**
+  - Astro handles routing and layout, embedding React components for dynamic features.
 
-## 🚀 Project Structure
+## Tech Stack
 
-Inside of your Astro project, you'll see the following folders and files:
+- **Frontend:** React (functional components, hooks)
+- **Styling:** Tailwind CSS
+- **Build Tool:** Vite
+- **Framework:** Astro (for routing, layouts, and SSR)
+- **API:** OpenAI Whisper (via custom API endpoints) and Cloud Translation API
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+## Usage
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+1. **Start Transcription:**
+   - Click the microphone button to begin live transcription.
+   - Pause/resume as needed; stop to finish and save.
+2. **Save & View History:**
+   - Name and save your transcription.
+   - Access previous transcriptions from the History page.
+3. **Translation:**
+   - (If enabled) Translate your transcription to other languages.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## Development
 
-Any static assets, like images, can be placed in the `public/` directory.
+- **Install dependencies:**
+  ```sh
+  npm install
+  ```
+- **Run the dev server:**
+  ```sh
+  npm run dev
+  ```
+- **Build for production:**
+  ```sh
+  npm run build
+  ```
 
-## 🧞 Commands
+## Contributing
 
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- Follow the coding standards in Copilot Instructions.
+- Use functional React components, and Tailwind for styling.
+- Keep code modular, type-safe, and well-documented.
