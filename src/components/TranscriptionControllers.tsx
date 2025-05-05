@@ -159,6 +159,7 @@ const TranscriptionControllers: React.FC<IRealTimeTranscription> = ({
   const [recording, setRecording] = useState<RecordingType>("ready");
   const [error, setError] = useState<string | null>(null);
   const [selectedLanguage, setSelectedLanguage] = useState<string>("he");
+  const [shouldTranslate, setShouldTranslate] = useState<boolean>(true);
   const sessionRef = useRef<Session | null>(null);
   const streamRef = useRef<MediaStream | null>(null);
 
@@ -202,14 +203,18 @@ const TranscriptionControllers: React.FC<IRealTimeTranscription> = ({
           eventData.transcript
         ) {
           setDelta("");
-          fetch(
-            `/api/translate?text=${eventData.transcript}&from=${selectedLanguage}`
-          ).then(async (result) => {
-            const translation = (await result.json())["translations"][0];
-            setFinalTranscript(
-              (prev) => prev + (prev ? " " : "") + translation
-            );
-          });
+          shouldTranslate
+            ? fetch(
+                `/api/translate?text=${eventData.transcript}&from=${selectedLanguage}`
+              ).then(async (result) => {
+                const translation = (await result.json())["translations"][0];
+                setFinalTranscript(
+                  (prev) => prev + (prev ? " " : "") + translation
+                );
+              })
+            : setFinalTranscript(
+                (prev) => prev + (prev ? " " : "") + eventData.transcript
+              );
         } else if (
           eventData.type ===
             "conversation.item.input_audio_transcription.delta" &&
@@ -348,6 +353,26 @@ const TranscriptionControllers: React.FC<IRealTimeTranscription> = ({
             </option>
           ))}
         </select>
+      </div>
+      <div className="w-full max-w-lg mb-4 flex items-center justify-between">
+        <label htmlFor="translate-toggle" className="text-[#191716] font-medium">
+          Translate output
+        </label>
+        <button
+          id="translate-toggle"
+          type="button"
+          role="switch"
+          aria-checked={shouldTranslate}
+          onClick={() => setShouldTranslate((v) => !v)}
+          className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-[#43AA8B] shadow-md
+            ${shouldTranslate ? 'bg-[#43AA8B]' : 'bg-gray-300'}`}
+          disabled={!["ready", "stopped", "error", "paused"].includes(recording)}
+        >
+          <span
+            className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform
+              ${shouldTranslate ? 'translate-x-6' : 'translate-x-1'}`}
+          />
+        </button>
       </div>
     </div>
   );

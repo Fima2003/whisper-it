@@ -1,12 +1,13 @@
 export const prerender = false;
 
+// /src/api/ephemeralKey.ts
 export async function GET({ request }: any): Promise<Response> {
   const url = new URL(request.url);
   const params = new URLSearchParams(url.search);
   const lang = params.get("lang");
   const sessionConfig = {
     input_audio_transcription: {
-      model: "whisper-1",
+      model: "gpt-4o-transcribe",
       language: lang,
     },
     turn_detection: {
